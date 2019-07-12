@@ -1,0 +1,188 @@
+﻿<control:IDynamicBase
+    x:Class="MeterControls.DWaterMeter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:control="clr-namespace:Utility.Controls"
+    xmlns:local="clr-namespace:MeterControls">
+    <Viewbox
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Stretch="Uniform">
+        <Grid Width="180">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Canvas
+                Grid.Row="1"
+                Width="180"
+                Height="180">
+                <Image
+                    Width="180"
+                    Height="180"
+                    Source="/Images/Frequency60.png"
+                    Stretch="Fill" />
+                <TextBlock
+                    Name="textblock1"
+                    Canvas.Left="20"
+                    Canvas.Top="102"
+                    Foreground="#EEFFFFFF"
+                    RenderTransformOrigin="0.5,0.5"
+                    TextBlock.FontSize="12"
+                    TextBlock.TextAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="-112.535" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <Run Language="zh-cn" Text="10" />
+                </TextBlock>
+                <TextBlock
+                    Name="textblock2"
+                    Canvas.Left="31"
+                    Canvas.Top="43"
+                    Foreground="#EEFFFFFF"
+                    RenderTransformOrigin="0.5,0.5"
+                    TextBlock.FontSize="12"
+                    TextBlock.TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="-54.377" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <Run Language="zh-cn" Text="20" />
+                </TextBlock>
+                <TextBlock
+                    Name="textblock3"
+                    Canvas.Left="80"
+                    Canvas.Top="15"
+                    Width="20"
+                    Height="16"
+                    Foreground="#EEFFFFFF"
+                    RenderTransformOrigin="0.117,0.104"
+                    TextBlock.FontSize="12"
+                    TextBlock.TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    <Run Language="zh-cn" Text="30" />
+                </TextBlock>
+                <TextBlock
+                    Name="textblock4"
+                    Canvas.Left="133"
+                    Canvas.Top="45"
+                    Width="20"
+                    Height="16"
+                    Foreground="#EEFFFFFF"
+                    RenderTransformOrigin="0.5,0.5"
+                    TextBlock.FontSize="12"
+                    TextBlock.TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="55.508" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <Run Language="zh-cn" Text="40" />
+                </TextBlock>
+                <TextBlock
+                    Name="textblock5"
+                    Canvas.Left="142"
+                    Canvas.Top="101"
+                    Width="20"
+                    Height="16"
+                    Foreground="#EEFFFFFF"
+                    RenderTransformOrigin="0.5,0.5"
+                    TextBlock.FontSize="12"
+                    TextBlock.TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="114.301" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <Run Language="zh-cn" Text="50" />
+                </TextBlock>
+                <Image
+                    Canvas.Left="87"
+                    Canvas.Top="20"
+                    Height="72"
+                    RenderTransformOrigin="0.5,1"
+                    Source="/Images/pointerblue.png"
+                    Stretch="Uniform">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform x:Name="rotateAngle" Angle="0" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard Name="stroyRotateAngle">
+                                    <DoubleAnimation
+                                        x:Name="m_DoubleAnimate"
+                                        Storyboard.TargetName="rotateAngle"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="0"
+                                        To="50" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <TextBlock
+                    Canvas.Left="75"
+                    Canvas.Top="125"
+                    FontWeight="Bold"
+                    TextBlock.FontSize="16"
+                    TextBlock.Foreground="#B5D6FE"
+                    TextBlock.TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    <Run
+                        Name="UnitText"
+                        Language="zh-cn"
+                        Text="m/s" />
+                </TextBlock>
+            </Canvas>
+            <StackPanel
+                Grid.Row="2"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock
+                    Margin="0,5,5,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Foreground="#EEFFFFFF"
+                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:DWaterMeter, Mode=FindAncestor}}" />
+                <TextBlock
+                    x:Name="value"
+                    Grid.Row="2"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="#00FFFF"
+                    Text="Value" />
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+
+</control:IDynamicBase>

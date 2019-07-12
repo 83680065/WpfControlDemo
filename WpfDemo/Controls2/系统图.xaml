@@ -1,0 +1,614 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomControl="clr-namespace:CustomControls.Controls"
+    xmlns:MeterControls="clr-namespace:MeterControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="UserControl"
+    Margin="20"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    mc:Ignorable="d">
+    <Viewbox 
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Stretch="Uniform">
+        <StackPanel Orientation="Horizontal">
+            <Grid>
+                <Image
+                    Width="860"
+                    Height="560"
+                    Source="/images/设备图.png" />
+                <Grid
+                    Width="1000"
+                    Height="700"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <!--  中央左侧流向  -->
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Panel.ZIndex="0"
+                        ArrowData="380,396,0 380,278,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M425,472 L380.5,472 380.5,198.5 107.5,198.5 107.5,161" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="410,471.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M426,472 L380.5,472 380.5,439.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="410,343.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M426,344 L383.5,344" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="410,224.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M426,225 L384.5,225" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="320,168,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M320,193 L320,162" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="213,168,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M213,192 L213,161.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="107,168,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M135.5,198.5 107.5,198.5 107.5,161" />
+                    <!--  中央右侧流向  -->
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Panel.ZIndex="0"
+                        ArrowData=""
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M575,473 L624.5,473 624.5,198.5 902.5,198.5 902.5,165.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="590,471.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M575,473 L623.5,473 624.5,444.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="590,340.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M575,342 L619.5,342" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="590,220.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M575,222 L618.5,222" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="688.5,171,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M689,193 L689,164.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="801.5,171,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M802,193 L802,165.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="902,171,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="#0090ff"
+                        PathData="M881,198 L902.5,198.5 902.5,165.5" />
+
+                    <!--  左侧流向  -->
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Panel.ZIndex="0"
+                        ArrowData="28.5,223.5,180"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M319,69 L319,28.5 28.5,28.5 28.5,623.5 122.5,623.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="318.5,54,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M319,69 L319,28.5 295.5,28.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="214,54,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M214,71 L214,33.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="108,54,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M108,73 L108,33.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="120,356,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M34,358 L122.5,358" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="120,490.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M33,492 L123.5,492" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="120,622,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M28.5,590.5 28.5,623.5 122.5,623.5" />
+                    <!--  右侧流向  -->
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Panel.ZIndex="0"
+                        ArrowData="968,223.5,180"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M689,67 L689,27.5 967.5,27.5 967.5,623.5 888.5,623.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="688.5,54,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M689,67 L689,27.5 716.5,27.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="799,54,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M800,70 L800,31.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="902,54,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M903,69 L903,32.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="892,359,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M965,359 L888.5,359" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="892,493,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M967,493 L886.5,493" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="892,623,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M967.5,590.5 967.5,623.5 888.5,623.5" />
+
+                    <!--  中央左下侧流向  -->
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Panel.ZIndex="0"
+                        ArrowData="256.5,440.5,180 330.5,436.5,0"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M141,274 L141,249.5 256.5,249.5 256.5,629.5 331.5,629.5 331.5,254.5 421.5,254.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="200,248.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M141,274 L141,249.5 240.5,249.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="200,378.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M141,406 L141,379.5 251.5,379.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="200,509.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M141,536 L141,510.5 251.5,510.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="418.5,253.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="346.5,254.5 421.5,254.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="418.5,373.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M335.5,374.5 421.5,374.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="418.5,505.5,90"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        NomarlColorBrsuh="Yellow"
+                        PathData="M335.5,506.5 421.5,506.5" />
+
+                    <!--  中央右下侧流向  -->
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Panel.ZIndex="0"
+                        ArrowData="668.5,438.5,0 747.5,440.5,180"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M870,274 L870,251.5 747.5,251.5 747.5,628.5 669.5,628.5 669.5,253.5 586.5,253.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="805.5,251.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M870,274 L870,251.5 765.5,251.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="805.5,379.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M870,405 L870,380.5 750.5,380.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="805.5,510,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M870,538 L870,510.5 750.5,510.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="588.5,253.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsChecked="True"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M653.5,253.5 582.5,253.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="588.5,375.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M665.5,375.5 582.5,375.5" />
+                    <CustomControl:LineUc
+                        Width="1000"
+                        Height="700"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ArrowData="588.5,503.5,270"
+                        CanvasHeight="700"
+                        CanvasWidth="1000"
+                        GroupName="11"
+                        IsMoveFromStartToEnd="True"
+                        PathData="M665.5,503.5 582.5,503.5" />
+
+                    <TextBlock
+                        Margin="390,190,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="20°C" />
+                    <TextBlock
+                        Margin="580,190,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="22°C" />
+                    <TextBlock
+                        Margin="390,310,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="24°C" />
+                    <TextBlock
+                        Margin="580,310,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="27°C" />
+                    <TextBlock
+                        Margin="390,430,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="18°C" />
+                    <TextBlock
+                        Margin="580,430,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="16°C" />
+                    <TextBlock
+                        Margin="50,290,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="31.2°C" />
+                    <TextBlock
+                        Margin="900,290,0,0"
+                        FontSize="18"
+                        Foreground="#EEFFFFFF"
+                        Text="30.9°C" />
+                </Grid>
+            </Grid>
+            <StackPanel Margin="20,0,0,0">
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="#EEFFFFFF"
+                    Text="室外环境温度" />
+                <MeterControls:DTemperatureMeter />
+                <MeterControls:DAnimatedDial360
+                    Title="负荷率"
+                    Margin="0,10,0,0"
+                    Value="60" />
+                <MeterControls:DAnimatedDial360
+                    Title="实际冷负荷率"
+                    Margin="0,10,0,0"
+                    Value="60" />
+            </StackPanel>
+        </StackPanel>
+    </Viewbox>
+</UserControl>

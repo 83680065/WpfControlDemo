@@ -1,0 +1,48 @@
+﻿<Window
+    x:Class="WpfDemo.CollectionlineWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:MultiColorWin.Controls.Timeline"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfDemo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="CollectionlineWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/styles/TopLineStyle.xaml" />
+                <ResourceDictionary Source="/styles/BottomLineStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Margin="20" Background="Black">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <controls:Collectionline
+                    x:Name="ATimeline2"
+                    Title="A路"
+                    Margin="0,50,0,0"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource OwnerTopItemTemplate}"
+                    ItemsSource="{Binding ParamValues[1].ParamValue}"
+                    LastLineTemplate="{StaticResource OwnerTopLastLineTemplate}"
+                    LinePlacement="Top" />
+                <Border Height="15" />
+                <controls:Collectionline
+                    x:Name="ATimeline3"
+                    Title="A路"
+                    Margin="0,50,0,0"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource OwnerBottomItemTemplate}"
+                    ItemsSource="{Binding ParamValues[1].ParamValue}"
+                    LastLineTemplate="{StaticResource OwnerBottomLastLineTemplate}"
+                    LinePlacement="Bottom" />
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

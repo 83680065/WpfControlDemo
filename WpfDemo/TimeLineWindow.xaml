@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="WpfDemo.TimeLineWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:MultiColorWin.Controls.Timeline"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfDemo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TimeLineWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="Timeline/TimelineStyle.xaml" />
+    </Window.Resources>
+    <Grid Background="#061c33">
+        <Grid.Resources>
+            <DataTemplate x:Key="timeLineItemTemplate">
+                <StackPanel Height="60" Margin="0,-5,0,0">
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="#92d7ff"
+                        Text="{Binding Title}" />
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="firstSlotTemplate">
+                <Grid>
+                    <Ellipse
+                        x:Name="Slot1"
+                        Width="11"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        Stroke="#92d7ff" />
+                    <Rectangle
+                        x:Name="Line"
+                        Width="1"
+                        Height="20"
+                        VerticalAlignment="Bottom"
+                        Fill="#92d7ff" />
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+        <controls:Timeline
+            Width="250"
+            Height="400"
+            Margin="20"
+            Padding="15,0,0,0"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            BorderBrush="#92d7ff"
+            FirstSlotTemplate="{StaticResource firstSlotTemplate}"
+            ItemTemplate="{StaticResource timeLineItemTemplate}"
+            ItemsSource="{Binding SigninItems}" />
+
+    </Grid>
+</Window>

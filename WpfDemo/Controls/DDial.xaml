@@ -1,0 +1,128 @@
+﻿<control:IDynamicBase
+    x:Class="MeterControls.DDial"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MeterControls"
+    xmlns:control="clr-namespace:Utility.Controls">
+    <Viewbox
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Stretch="Uniform">
+        <Grid Width="180">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Canvas
+                Grid.Row="1"
+                Width="190"
+                Height="110"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Image
+                    Canvas.Left="3"
+                    Canvas.Top="3"
+                    Height="96"
+                    Source="/images/panelHalf.png"
+                    Stretch="Fill" />
+                <TextBlock
+                    Name="tbFrom"
+                    Canvas.Left="-7"
+                    Canvas.Top="78"
+                    Width="25"
+                    Height="15"
+                    Text="0"
+                    TextBlock.FontSize="10pt"
+                    TextBlock.Foreground="#FFFFFFFF"
+                    TextBlock.TextAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="-70" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock
+                    Name="tbMiddle"
+                    Canvas.Left="82"
+                    Width="25"
+                    Text="50"
+                    TextBlock.FontSize="10pt"
+                    TextBlock.Foreground="#FFFFFFFF"
+                    TextBlock.TextAlignment="Center" />
+                <TextBlock
+                    Name="tbTo"
+                    Canvas.Left="190"
+                    Canvas.Top="58"
+                    Width="25"
+                    Height="15"
+                    Text="100"
+                    TextBlock.FontSize="10pt"
+                    TextBlock.Foreground="#FFFFFFFF"
+                    TextBlock.TextAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="70" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <Image
+                    Name="ImagePointer"
+                    Canvas.Left="92"
+                    Canvas.Top="12"
+                    Width="6"
+                    Height="85"
+                    RenderTransformOrigin="0.5,1"
+                    Source="/Images/pointerblue.png"
+                    Stretch="Uniform">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform x:Name="RTPointer" Angle="0" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Canvas>
+            <StackPanel
+                Grid.Row="2"
+                Margin="0,5,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock
+                    x:Name="title"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Foreground="#EEFFFFFF"
+                    Text="{Binding RelativeSource={RelativeSource AncestorType=local:DDial}, Path=Title, Mode=OneWay}" />
+                <TextBlock
+                    x:Name="value"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    Foreground="#00FFFF"
+                    Text="Value" />
+                <TextBlock
+                    Name="tbUnit"
+                    Margin="2,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    Foreground="#EEFFFFFF"
+                    Text="{Binding RelativeSource={RelativeSource AncestorType=local:DDial}, Path=Unit, Mode=OneWay}"
+                    TextAlignment="Center" />
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</control:IDynamicBase>

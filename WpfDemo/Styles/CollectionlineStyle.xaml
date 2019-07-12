@@ -1,0 +1,477 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:MultiColorWin.Controls.Timeline"
+    xmlns:converters="clr-namespace:WpfDemo.Converters">
+    <converters:AutoLineWidth x:Key="autoLineWidthConverters" />
+    <!--<Color x:Key="redEllipse">#ff4848</Color>-->
+    <SolidColorBrush x:Key="redEllipse" Color="#ff4848" />
+    <Style x:Key="baseLine" TargetType="Line">
+        <Setter Property="Stroke" Value="#0E5CAB" />
+        <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+    <Style x:Key="disabledLine" TargetType="Line">
+        <Setter Property="Stroke" Value="#1d384f" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="StrokeDashArray" Value="2,2" />
+    </Style>
+
+    <Style x:Key="normalTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="#c8e5ff" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="ellipseTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="#0b153f" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ellipseButton" TargetType="Button">
+        <Setter Property="Background" Value="#1d384f" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value=" 75" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="13" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="13" />
+                            </Grid.ColumnDefinitions>
+                            <Ellipse
+                                x:Name="leftEllipse"
+                                Margin="0,0,-13,0"
+                                Fill="{Binding ElementName=rect, Path=Fill}" />
+                            <TextBlock
+                                Grid.ColumnSpan="3"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Content}" />
+                            <Rectangle
+                                x:Name="rect"
+                                Grid.Column="1"
+                                Fill="{TemplateBinding Background}" />
+                            <Ellipse
+                                x:Name="rightEllipse"
+                                Grid.Column="2"
+                                Margin="-13,0,0,0"
+                                Fill="{Binding ElementName=rect, Path=Fill}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="rect" Property="Fill" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <!--  上面  -->
+    <DataTemplate x:Key="TopTitleLineTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Bottom">
+                <TextBlock
+                    FontSize="18"
+                    Foreground="#FF92D7FF"
+                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                    TextAlignment="Center" />
+            </StackPanel>
+            <Line
+                Grid.Row="1"
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="0"
+                Y2="30" />
+        </Grid>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="TopFirstLineTemplate">
+        <Grid>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=1, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y1="0"
+                Y2="0" />
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="0" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TopMiddleLineTemplate">
+        <Grid>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="0"
+                X2="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=1, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y1="0"
+                Y2="0" />
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="0" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TopLastLineTemplate">
+        <Grid>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="0"
+                X2="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y1="0"
+                Y2="0" />
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="0" />
+        </Grid>
+    </DataTemplate>
+
+    <!--  下面  -->
+    <DataTemplate x:Key="BottomTitleLineTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="0"
+                Y2="15" />
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                <TextBlock
+                    FontSize="18"
+                    Foreground="#FF92D7FF"
+                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                    TextAlignment="Center" />
+            </StackPanel>
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="BottomFirstLineTemplate">
+        <Grid>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=1, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="{Binding Y1, RelativeSource={RelativeSource Mode=Self}}" />
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="0" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="BottomMiddleLineTemplate">
+        <Grid>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="0"
+                X2="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=1, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="{Binding Y1, RelativeSource={RelativeSource Mode=Self}}" />
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="0" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="BottomLastLineTemplate">
+        <Grid>
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="0"
+                X2="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            <Line
+                Stroke="#0E5CAB"
+                StrokeThickness="2"
+                X1="{Binding ItemLineWidth, Converter={StaticResource autoLineWidthConverters}, ConverterParameter=0.5, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                X2="{Binding X1, RelativeSource={RelativeSource Mode=Self}}"
+                Y1="{Binding ItemLineHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Y2="0" />
+        </Grid>
+    </DataTemplate>
+
+
+    <ControlTemplate x:Key="LineTop" TargetType="{x:Type controls:CollectionlineItem}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ContentPresenter
+                x:Name="titleSolt"
+                ContentTemplate="{Binding TitleLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Visibility="Collapsed" />
+            <ContentPresenter
+                x:Name="Slot"
+                Grid.Row="1"
+                ContentTemplate="{Binding MiddleLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            <ContentPresenter
+                Grid.Row="2"
+                Margin="{TemplateBinding Padding}"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsFirstItem, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding FirstLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsLastItem, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding LastLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMiddleItem, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding MiddleLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </MultiDataTrigger>
+
+            <DataTrigger Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="True">
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding LineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </DataTrigger>
+
+            <Trigger Property="IsTitleItem" Value="True">
+                <Setter TargetName="titleSolt" Property="Visibility" Value="Visible" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LineBottom" TargetType="{x:Type controls:CollectionlineItem}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <ContentPresenter
+                Margin="{TemplateBinding Padding}"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            <ContentPresenter
+                x:Name="Slot"
+                Grid.Row="1"
+                ContentTemplate="{Binding MiddleLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+
+            <ContentPresenter
+                x:Name="titleSolt"
+                Grid.Row="2"
+                ContentTemplate="{Binding TitleLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}"
+                Visibility="Collapsed" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsFirstItem, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding FirstLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsLastItem, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding LastLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMiddleItem, RelativeSource={RelativeSource Self}}" Value="True" />
+                    <Condition Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding MiddleLineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </MultiDataTrigger>
+
+            <DataTrigger Binding="{Binding IsCustomEveryLine, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="True">
+                <Setter TargetName="Slot" Property="ContentTemplate" Value="{Binding LineTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+            </DataTrigger>
+
+            <Trigger Property="IsTitleItem" Value="True">
+                <Setter TargetName="titleSolt" Property="Visibility" Value="Visible" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+
+
+    <DataTemplate x:Key="TitleLineTemplate">
+        <ContentPresenter x:Name="select" ContentTemplate="{StaticResource TopTitleLineTemplate}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Top">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource TopTitleLineTemplate}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Bottom">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource BottomTitleLineTemplate}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FirstLineTemplate">
+        <ContentPresenter x:Name="select" ContentTemplate="{StaticResource TopFirstLineTemplate}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Top">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource TopFirstLineTemplate}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Bottom">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource BottomFirstLineTemplate}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+    <DataTemplate x:Key="MiddleLineTemplate">
+        <ContentPresenter x:Name="select" ContentTemplate="{StaticResource TopMiddleLineTemplate}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Top">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource TopMiddleLineTemplate}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Bottom">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource BottomMiddleLineTemplate}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+    <DataTemplate x:Key="LastLineTemplate">
+        <ContentPresenter x:Name="select" ContentTemplate="{StaticResource TopLastLineTemplate}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Top">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource TopLastLineTemplate}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Bottom">
+                <Setter TargetName="select" Property="ContentTemplate" Value="{StaticResource BottomLastLineTemplate}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+
+    <Style TargetType="{x:Type controls:CollectionlineItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Template" Value="{StaticResource LineTop}" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Top">
+                <Setter Property="Template" Value="{StaticResource LineTop}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding LinePlacement, RelativeSource={RelativeSource AncestorType={x:Type controls:Collectionline}}}" Value="Bottom">
+                <Setter Property="Template" Value="{StaticResource LineBottom}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type controls:Collectionline}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#007eff" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="FirstLineTemplate" Value="{StaticResource FirstLineTemplate}" />
+        <Setter Property="MiddleLineTemplate" Value="{StaticResource MiddleLineTemplate}" />
+        <Setter Property="LastLineTemplate" Value="{StaticResource LastLineTemplate}" />
+        <Setter Property="TitleLineTemplate" Value="{StaticResource TitleLineTemplate}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Collectionline}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Style.Triggers>
+            <Trigger Property="LinePlacement" Value="Top">
+                <Setter Property="FirstLineTemplate" Value="{StaticResource TopFirstLineTemplate}" />
+                <Setter Property="MiddleLineTemplate" Value="{StaticResource TopMiddleLineTemplate}" />
+                <Setter Property="LastLineTemplate" Value="{StaticResource TopLastLineTemplate}" />
+                <Setter Property="TitleLineTemplate" Value="{StaticResource TopTitleLineTemplate}" />
+            </Trigger>
+            <Trigger Property="LinePlacement" Value="Bottom">
+                <Setter Property="FirstLineTemplate" Value="{StaticResource BottomFirstLineTemplate}" />
+                <Setter Property="MiddleLineTemplate" Value="{StaticResource BottomMiddleLineTemplate}" />
+                <Setter Property="LastLineTemplate" Value="{StaticResource BottomLastLineTemplate}" />
+                <Setter Property="TitleLineTemplate" Value="{StaticResource BottomTitleLineTemplate}" />
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+</ResourceDictionary>

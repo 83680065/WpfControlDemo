@@ -1,0 +1,68 @@
+﻿<Window
+    x:Class="WpfDemo.Window2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:MultiColorWin.Controls.Timeline"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Window2"
+    Width="800"
+    Height="850"
+    Background="Black"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/styles/ItemsControlStyle.xaml" />
+                <ResourceDictionary Source="/styles/TopLineStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Margin="20">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding ParamValues[1].ParamValue}" Style="{StaticResource topItemsControl}" />
+                <Border Height="15" />
+
+                <controls:Collectionline
+                    Title="A路测试"
+                    Margin="0,50,0,0"
+                    HorizontalContentAlignment="Stretch"
+                    ItemLineHeight="30"
+                    ItemLineWidth="80"
+                    ItemTemplate="{StaticResource topItemTemplate}"
+                    ItemsSource="{Binding ParamValues[1].ParamValue}" />
+
+                <controls:Collectionline
+                    x:Name="ATimeline1"
+                    Title="A路"
+                    Margin="0,50,0,0"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource OwnerTopItemTemplate}"
+                    ItemsSource="{Binding ParamValues[1].ParamValue}"
+                    LastLineTemplate="{StaticResource OwnerTopLastLineTemplate}" />
+                <controls:Collectionline
+                    x:Name="ATimeline2"
+                    Title="A路"
+                    Margin="0,50,0,0"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource OwnerTopItemTemplate}"
+                    ItemsSource="{Binding ParamValues[1].ParamValue}"
+                    LastLineTemplate="{StaticResource OwnerTopLastLineTemplate}" />
+                <controls:Collectionline
+                    x:Name="ATimeline3"
+                    Title="A路"
+                    Margin="0,50,0,0"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource OwnerTopItemTemplate}"
+                    ItemsSource="{Binding ParamValues[1].ParamValue}"
+                    LastLineTemplate="{StaticResource OwnerTopLastLineTemplate}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

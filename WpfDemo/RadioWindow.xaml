@@ -1,0 +1,122 @@
+﻿<Window x:Class="WpfDemo.RadioWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemo"
+        mc:Ignorable="d"
+        Title="RadioWindow"
+        Height="450"
+        Width="800">
+    <Window.Resources>
+        <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+        <Style x:Key="ToolTipStyle"
+               TargetType="ToolTip">
+            <Setter Property="IsOpen"
+                    Value="False">
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToolTip">
+                        <Grid>
+                            <Path Stroke="Black"
+                                  StrokeThickness="0.5"
+                                  Fill="#173277">
+                                <Path.Data>
+                                    <PathGeometry Figures="M 15,10 
+                                      L 15,10 17,1 
+                                      L 17,1 25,10                                                                        
+                                      Z" />
+                                </Path.Data>
+                            </Path>
+                            <Border Margin="0 10 0 0"
+                                    Background="#173277"
+                                    CornerRadius="4">
+                                <Grid Margin="10">
+                                    <TextBlock x:Name="textBlock"
+                                               MaxWidth="150"
+                                               Text="{TemplateBinding Content }"
+                                               FontSize="14"
+                                               TextWrapping="Wrap"
+                                               Foreground="White" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <GroupBox>
+                <Grid Background="#ddff1254"
+                      Height="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <ContextMenu.Items>
+                                <MenuItem Header="A"
+                                          Click="MenuItem_Click"
+                                          Checked="MenuItem_Checked"
+                                          IsChecked="{Binding TestText,  Converter={StaticResource EnumToBooleanConverter},ConverterParameter='A'}" />
+                                <MenuItem Header="B"
+                                          Click="MenuItem_Click"
+                                          Checked="MenuItem_Checked"
+                                          IsChecked="{Binding TestText,    Converter={StaticResource EnumToBooleanConverter},ConverterParameter='B'}" />
+                                <MenuItem Header="C"
+                                          Click="MenuItem_Click"
+                                          Checked="MenuItem_Checked"
+                                          IsChecked="{Binding TestText,Converter={StaticResource EnumToBooleanConverter},ConverterParameter='C'}" />
+                            </ContextMenu.Items>
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+                    <CheckBox Grid.Row="0"
+                              Grid.Column="0"
+                              Content="A"
+                              Margin="10"
+                              IsChecked="{Binding Path=TestText,Converter={StaticResource EnumToBooleanConverter},ConverterParameter='A'}"></CheckBox>
+                    <CheckBox Grid.Row="0"
+                              Grid.Column="1"
+                              Content="B"
+                              Margin="10"
+                              IsChecked="{Binding Path=TestText,Converter={StaticResource EnumToBooleanConverter},ConverterParameter='B'}"></CheckBox>
+                    <CheckBox Grid.Row="0"
+                              Grid.Column="2"
+                              Content="C"
+                              Margin="10"
+                              IsChecked="{Binding Path=TestText,Converter={StaticResource EnumToBooleanConverter},ConverterParameter='C'}"></CheckBox>
+                </Grid>
+            </GroupBox>
+            <TextBox Text="{Binding Path=TestText}"></TextBox>
+            <TextBlock Text="测试toolTip"
+                       Width="150">
+                <TextBlock.ToolTip>
+                    <ToolTip Content="测试效果"
+                             Style="{StaticResource ToolTipStyle}"></ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+            <TextBlock Text="测试toolTip2"
+                       Width="150">
+                <TextBlock.ToolTip>
+                    <ToolTip Content="默认的MenuItem样式比较普通，这次自定义MenuItem的样式也只是对MenuItem的颜色风格进行变化。需要其他功能的变化，大家可以根据样式代码进行扩展"
+                             Style="{StaticResource ToolTipStyle}"></ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+            <Button Height="20"
+                    Name="btnGetRoBValue"
+                    Content="Get radio button value"
+                    Click="btnGetRoBValue_Click">
+
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

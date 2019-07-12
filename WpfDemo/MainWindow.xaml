@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="WpfDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls2="clr-namespace:WpfDemo.Controls2"
+    xmlns:MeterControls="clr-namespace:MeterControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfDemo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="900"
+    mc:Ignorable="d">
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <MeterControls:DWaterMeter
+                Title="频率:"
+                Width="200"
+                Height="200"
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                DigitText="60"
+                MinDigit="1"
+                Unit="HZ"
+                ValueFormat="{}{0}HZ"
+                Value="52" />
+            <MeterControls:DDial
+                Title="Ubc"
+                Width="200"
+                Height="200"
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                ValueFormat="{}{0}V"
+                Value="388"
+                From="0"
+                To="450" />
+            <MeterControls:DAnimatedDial360
+                Title="总功率因数"
+                Width="200"
+                Height="200"
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                ShowScaleValue="False"
+                ValueFormat="{}{0}%"
+                Value="50" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="20">
+            <Controls2:BatteryRoomControl />
+        </StackPanel>
+    </Grid>
+</Window>
