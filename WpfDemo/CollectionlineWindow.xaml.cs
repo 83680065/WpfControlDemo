@@ -29,7 +29,7 @@ namespace WpfDemo
 
             var viemModel = new ViewModeTest();
             viemModel.ParamValues = data;
-            viemModel.OtherCount = otherCount; 
+            viemModel.OtherCount = 2; 
            
             ATimeline2.DataContext = viemModel; 
             ATimeline3.DataContext = viemModel;
