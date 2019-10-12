@@ -79,7 +79,5 @@
                 ValueFormat="{}{0}%"
                 Value="30" />
         </StackPanel>
-
-
     </Grid>
 </Window>
