@@ -3,41 +3,67 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfDemo"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ReportWindow"
         Height="450"
         Width="800">
     <Window.Resources>
+        <sys:Double x:Key="columnWidth">180</sys:Double>
+        <sys:Double x:Key="dateColumnWidth">90</sys:Double>
 
-        <Style x:Key="CPNMSTrue"
+        <Style x:Key="CellColumnStyle"
                TargetType="DataGridColumnHeader">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
                         <!--模板绑定-->
-                        <Grid Width="420"
-                              Height="74">
+                        <Grid Height="74">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
 
                             <!--设置标题名称-->
                             <Label FontFamily="微软雅黑"
                                    FontSize="14"
                                    FontWeight="Black"
-                                   Content="2月27号-3月10号"
+                                   Content="{Binding DataContext.ColumnsTitle,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Grid.ColumnSpan="5" />
+                                   HorizontalAlignment="Center" />
+                            <ItemsControl Grid.Row="1"
+                                          HorizontalAlignment="Stretch"
+                                          ItemsSource="{Binding DataContext.Columns,RelativeSource={RelativeSource AncestorType=DataGrid}}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"></StackPanel>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Width="{StaticResource  columnWidth}">
+                                            <!--<Rectangle Fill="Transparent"                                                       
+                                                       Width="1" />-->
+                                            <Rectangle Fill="#ccc"
+                                                       Width="1" />
+                                            <Label FontFamily="微软雅黑"
+                                                   FontSize="14"
+                                                   Width="{StaticResource  dateColumnWidth}"
+                                                   Content="{Binding DateInfo}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" />
+                                            <Rectangle Fill="#ccc"
+                                                       Width="1" />
+                                            <Label FontFamily="微软雅黑"
+                                                   FontSize="14"
+                                                   Content="{Binding ValueInfo}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                             <!--设置间隔线-->
                             <Rectangle Fill="#ccc"
                                        Height="1"
@@ -45,75 +71,6 @@
                                        Grid.Row="0"
                                        Grid.RowSpan="2"
                                        Grid.ColumnSpan="5" />
-                            <Rectangle Fill="#ccc"
-                                       Width="1"
-                                       Visibility="Visible"
-                                       Grid.Row="1"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="2" />
-                            <Label FontFamily="微软雅黑"
-                                   FontSize="14"
-                                   Content="2月27号"
-                                   Grid.Row="2"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
-
-                            <Rectangle Fill="#ccc"
-                                       Width="1"
-                                       Visibility="Visible"
-                                       Grid.Row="1"
-                                       Grid.Column="1"
-                                       Grid.ColumnSpan="2" />
-                            <Label FontFamily="微软雅黑"
-                                   FontSize="14"
-                                   Content="当天耗电"
-                                   Grid.Row="2"
-                                   Grid.Column="1"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
-
-                            <Rectangle Fill="#ccc"
-                                       Width="1"
-                                       Visibility="Visible"
-                                       Grid.Row="1"
-                                       Grid.Column="2"
-                                       Grid.ColumnSpan="2" />
-                            <Label FontFamily="微软雅黑"
-                                   FontSize="14"
-                                   Content="2月28号"
-                                   Grid.Row="2"
-                                   Grid.Column="2"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
-
-                            <Rectangle Fill="#ccc"
-                                       Width="1"
-                                       Visibility="Visible"
-                                       Grid.Row="1"
-                                       Grid.Column="3"
-                                       Grid.ColumnSpan="2" />
-                            <Label FontFamily="微软雅黑"
-                                   FontSize="14"
-                                   Content="当天耗电"
-                                   Grid.Row="2"
-                                   Grid.Column="3"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
-
-                            <Rectangle Fill="#ccc"
-                                       Width="1"
-                                       Visibility="Visible"
-                                       Grid.Row="0"
-                                       Grid.RowSpan="2"
-                                       Grid.Column="4"
-                                       HorizontalAlignment="Right" />
-                            <Label FontFamily="微软雅黑"
-                                   FontSize="14"
-                                   Content="通过率"
-                                   Grid.Row="2"
-                                   Grid.Column="4"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
                             <Rectangle Fill="#ccc"
                                        Height="1"
                                        Visibility="Visible"
@@ -127,12 +84,17 @@
             </Setter>
         </Style>
     </Window.Resources>
-
-
     <ScrollViewer HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto">
-        <Grid>
-            <DataGrid Name="dategrid2"
+        <StackPanel Orientation="Horizontal">
+
+            <Button Content="导出Excel"
+                    Width="120"
+                    Click="btnExp"
+                    Height="60"></Button>
+
+            <DataGrid Name="AutoGrid"
+                      ItemsSource="{Binding Data}"
                       HorizontalAlignment="Left"
                       Margin="20"
                       GridLinesVisibility="None"
@@ -144,8 +106,6 @@
                       SelectionMode="Single"
                       HorizontalScrollBarVisibility="Hidden"
                       VerticalScrollBarVisibility="Hidden">
-
-                <!--#region 表头-->
                 <DataGrid.Style>
                     <Style TargetType="DataGrid">
                         <Setter Property="Background"
@@ -154,11 +114,9 @@
                                 Value="Column"></Setter>
                     </Style>
                 </DataGrid.Style>
-                <!--#endregion-->
 
-                <!--#region 数据网格的列标题样式属性-->
                 <DataGrid.ColumnHeaderStyle>
-                    <!--样式类型：DataGridColumnHeader（数据网格列标题）-->
+
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Height"
                                 Value="74" />
@@ -184,7 +142,7 @@
                                 Value="14"></Setter>
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
-                <!--#endregion-->
+
 
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
@@ -194,54 +152,47 @@
                                 Value="#ccc"></Setter>
                         <Setter Property="BorderThickness">
                             <Setter.Value>
-                                <Thickness></Thickness>
+                                <Thickness Left="1"
+                                           Top="0"
+                                           Right="0"
+                                           Bottom="0"></Thickness>
                             </Setter.Value>
                         </Setter>
                     </Style>
                 </DataGrid.RowStyle>
 
-                <!--#region DataGrid的CellStyle属性（数据表格的单元格样式-->
+
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">
                         <Setter Property="BorderThickness">
                             <Setter.Value>
                                 <Thickness Bottom="1"
-                                           Right="1"></Thickness>
+                                           Right="0.5"></Thickness>
                             </Setter.Value>
                         </Setter>
                         <Setter Property="BorderBrush"
                                 Value="#ccc"></Setter>
-                        <!--样式的触发器-->
                         <Style.Triggers>
-                            <!--是否选中是触发-->
                             <Trigger Property="IsSelected"
                                      Value="True">
-                                <!--触发：背景-->
                                 <Setter Property="Background">
-                                    <!--设置触发背景的值-->
                                     <Setter.Value>
-                                        <!--Color：颜色，Opacity：透明度-->
                                         <SolidColorBrush Color="AntiqueWhite"
                                                          Opacity="0.9" />
                                     </Setter.Value>
                                 </Setter>
-                                <!--设置字体颜色（Foreground）：红色（Red）-->
                                 <Setter Property="Foreground"
                                         Value="DarkMagenta"></Setter>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </DataGrid.CellStyle>
-                <!--#endregion-->
 
                 <DataGrid.Columns>
-                    
-                    <DataGridTemplateColumn x:Name="map_spotType"
-                                            Header="设备名称"
+                    <DataGridTemplateColumn Header="设备名称"
                                             Width="130">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-
                                 <StackPanel VerticalAlignment="Center"
                                             HorizontalAlignment="Center"
                                             Orientation="Horizontal">
@@ -249,71 +200,53 @@
                                            VerticalContentAlignment="Center"
                                            HorizontalContentAlignment="Center"></Label>
                                 </StackPanel>
-
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    
-                    <DataGridTemplateColumn Header="sec"
-                                            HeaderStyle="{StaticResource CPNMSTrue}">
+                    <DataGridTemplateColumn HeaderStyle="{StaticResource CellColumnStyle}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <!--数据内容-->
                                 <StackPanel Orientation="Horizontal">
-                                    <!--个数-->
-                                    <Label Content="{Binding HCTureNumber}"
-                                           Width="83"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
-                                    <Rectangle Fill="#ccc"
-                                               VerticalAlignment="Stretch"
-                                               Margin="0"
-                                               Width="1" />
-                                    <!--面积-->
-                                    <Label Content="{Binding HCTrueArea}"
-                                           Width="83"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
-                                    <Rectangle Fill="#ccc"
-                                               VerticalAlignment="Stretch"
-                                               Margin="0"
-                                               Width="1" />
-                                    <!--通过个数-->
-                                    <Label Content="{Binding HCTruePassNumber}"
-                                           Width="83"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
-                                    <Rectangle Fill="#ccc"
-                                               VerticalAlignment="Stretch"
-                                               Margin="0"
-                                               Width="1" />
-                                    <!--不通过个数-->
-                                    <Label Content="{Binding HCTrueNoPassNumber}"
-                                           Width="83"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
-                                    <Rectangle Fill="#ccc"
-                                               VerticalAlignment="Stretch"
-                                               Margin="0"
-                                               Width="1" />
-                                    <!--通过率-->
-                                    <Label Content="{Binding HCTruePassingRate}"
-                                           Width="80"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
+                                    <ItemsControl HorizontalAlignment="Stretch"
+                                                  ItemsSource="{Binding  DataValue}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"></StackPanel>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal"
+                                                            Width="{StaticResource  columnWidth}">
+                                                    <Rectangle Fill="#ccc"
+                                                               Width="1"
+                                                               Visibility="Visible" />
+                                                    <Label FontFamily="微软雅黑"
+                                                           Width="{StaticResource  dateColumnWidth}"
+                                                           FontSize="14"
+                                                           Content="{Binding DateInfo}"
+                                                           Grid.Row="2"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center" />
+                                                    <Rectangle Fill="#ccc"
+                                                               Width="1"
+                                                               Visibility="Visible" />
+                                                    <Label FontFamily="微软雅黑"
+                                                           FontSize="14"
+                                                           Content="{Binding ValueInfo}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </StackPanel>
-
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-
                 </DataGrid.Columns>
-
             </DataGrid>
-            <!--#endregion-->
-
-
-        </Grid>
+        </StackPanel>
     </ScrollViewer>
 </Window>
