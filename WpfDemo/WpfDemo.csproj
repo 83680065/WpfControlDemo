@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Convery\RectConverter.cs" />
+    <Compile Include="WindowsTest\ClipDemo.xaml.cs">
+      <DependentUpon>ClipDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsTest\CollectionlineWindow.xaml.cs">
       <DependentUpon>CollectionlineWindow.xaml</DependentUpon>
     </Compile>
@@ -152,6 +156,10 @@
     <Compile Include="WindowsTest\XamlDemo.xaml.cs">
       <DependentUpon>XamlDemo.xaml</DependentUpon>
     </Compile>
+    <Page Include="WindowsTest\ClipDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowsTest\CollectionlineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -333,7 +341,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="WindowsTest\packages.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
