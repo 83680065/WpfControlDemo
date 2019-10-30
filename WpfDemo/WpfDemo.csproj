@@ -42,10 +42,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -69,6 +71,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Convery\RectConverter.cs" />
+    <Compile Include="Printf\PrintfDemoWindow.xaml.cs">
+      <DependentUpon>PrintfDemoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Printf\PrintfHelper.cs" />
+    <Compile Include="Printf\PrintfViewWindow.xaml.cs">
+      <DependentUpon>PrintfViewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsTest\ClipDemo.xaml.cs">
       <DependentUpon>ClipDemo.xaml</DependentUpon>
     </Compile>
@@ -156,6 +165,14 @@
     <Compile Include="WindowsTest\XamlDemo.xaml.cs">
       <DependentUpon>XamlDemo.xaml</DependentUpon>
     </Compile>
+    <Page Include="Printf\PrintfDemoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Printf\PrintfViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowsTest\ClipDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
