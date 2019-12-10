@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Convery\RectConverter.cs" />
+    <Compile Include="Helpers\UserControlHelper.cs" />
     <Compile Include="Printf\PrintfDemoWindow.xaml.cs">
       <DependentUpon>PrintfDemoWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +135,9 @@
     </Compile>
     <Compile Include="Loading\LoadingWait.xaml.cs">
       <DependentUpon>LoadingWait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsTest\LoadXamlWindow.xaml.cs">
+      <DependentUpon>LoadXamlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowsTest\RadioWindow.xaml.cs">
       <DependentUpon>RadioWindow.xaml</DependentUpon>
@@ -226,6 +230,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Loading\LoadingWait.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowsTest\LoadXamlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
